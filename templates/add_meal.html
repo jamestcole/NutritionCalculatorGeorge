@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add a Meal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 0;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .form-group input[type=text],
+        .form-group select {
+            padding: 10px;
+            border: none;
+            width: 80%;
+            border-radius: 5px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group label {
+            margin-right: 5px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 25px;
+            background-image: linear-gradient(to right, #4facfe, #00f2fe);
+            color: white;
+            font-weight: bold;
+            max-width: 200px;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Add a Meal</h1>
+        {% if message %}
+        <p>{{message}}</p><br><br>
+        {% endif %}
+        <form action="/add_meal" method="post">
+            <div class="form-group">
+                <label for="meal">Meal:</label><br>
+                <input type="text" id="meal" name="meal"><br><br>
+            </div>
+            <div class="form-group">
+                <label for="ingredients">Ingredients:</label><br>
+                <input type="text" id="ingredients" name="ingredients"><br><br>
+            </div>
+            <input type="submit" value="Save Meal" class="btn">
+        </form><br><br>
+        <!-- Back to Home button -->
+        <a href="/" class=btn>Back to Home</a><br><br>
+
+    </div>
+
+</body>
+
+</html>

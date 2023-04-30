@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Meal Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 0;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .form-group input[type=text],
+        .form-group select {
+            padding: 10px;
+            border: none;
+            width: 80%;
+            border-radius: 5px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group label {
+            margin-right: 5px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 25px;
+            background-image: linear-gradient(to right, #4facfe, #00f2fe);
+            color: white;
+            font-weight: bold;
+            max-width: 200px;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Meal Generator</h1>
+        <form action="/generate_ingredients">
+            {% for i in range(7) %}
+            <div class="form-group">
+                <label for="meal{{i}}">{{days_of_week[i]}}:</label>
+                <select name="meal" id="meal{{i}}">
+                    <option value=""></option>
+                    {% for meal in meals %}
+                    <option value="{{meal['meal']}}">{{meal['meal']}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            {% endfor %}
+            <div class="buttons">
+                <input type="submit" value="Generate Ingredients" class="btn">
+        </form>
+
+        <a href="/add_meal" class="btn">Add a Meal</a>
+        <a href="/edit_meal" class="btn">Edit a Meal</a>
+    </div>
+    </div>
+</body>
+
+</html>
